@@ -1,0 +1,4 @@
+const ROCKET_CENTER_Y = canvas.height / 2 - 60;
+
+const PLAYER_HIT_THE_ROCKET_POS_X = 20 + ROCKET_WIDTH;
+const OPPONENT_HIT_THE_ROCKET_POS_X = canvas.width - ROCKET_WIDTH - BALL_SIDE;

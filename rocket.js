@@ -56,7 +56,7 @@ class Rocket {
 
     moveOpponent(ballPosY) {
         const ballIsAbove = ballPosY < this.y;
-        const ballIsBelow = ballPosY > this.y + this.height;
+        const ballIsBelow = ballPosY > this.y + this.height - BALL_SIDE;
         const ballIsInRocket = ballPosY >= this.y && ballPosY <= this.y + this.height;
 
         if (ballIsAbove) {

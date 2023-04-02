@@ -15,7 +15,6 @@ const ROCKET_WIDTH = 20;
 const ROCKET_HEIGHT = 120;
 const SCORE_OFFSET_Y = 120;
 const BALL_SIDE = 40;
-const ROCKET_DEFAULT_VELOCITY_Y = 360; // px/s
 
 // Game objects
 let playerRocket;
@@ -30,11 +29,8 @@ let opponentScore = 0;
 let secondsPassed = 0;
 let oldTimeStamp = 0;
 
-// Ball properties
+// Velocity variables
 const BALL_DEFAULT_VELOCITY_X = 10;
 const BALL_DEFAULT_VELOCITY_Y = 1.2;
-
-// Velocity variables
-let rocketVY = ROCKET_DEFAULT_VELOCITY_Y;
-let ballVX = BALL_DEFAULT_VELOCITY_X;
-let ballVY = BALL_DEFAULT_VELOCITY_Y;
+const ROCKET_DEFAULT_VELOCITY_Y = 750; // px/s
+const BALL_HIT_VELOCITY_MULTIPLIER = 1.65;

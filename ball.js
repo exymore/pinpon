@@ -9,7 +9,6 @@ class Ball {
 
     draw(rocketX, opponentRocketX, vx, vy) {
         drawRect(this.x, this.y, this.side, this.side, 'white');
-
         this.startMoving(rocketX, opponentRocketX, vx, vy);
     }
 
@@ -67,6 +66,11 @@ class Ball {
 
     hit(rocket) {
         this.vx = -this.vx;
+        ballVX *= BALL_HIT_VELOCITY_MULTIPLIER;
+
+        setTimeout(() => {
+            ballVX /= BALL_HIT_VELOCITY_MULTIPLIER
+        }, 750)
     }
 
     setVelocity(vx, vy) {

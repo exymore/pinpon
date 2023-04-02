@@ -32,8 +32,8 @@ function resetOptions() {
     ball = null;
 
     rocketVY = ROCKET_DEFAULT_VELOCITY_Y + round * 10;
-    ballVX = BALL_DEFAULT_VELOCITY_X + round * 0.1;
-    ballVY = BALL_DEFAULT_VELOCITY_Y
+    ballVX = BALL_DEFAULT_VELOCITY_X;
+    ballVY = BALL_DEFAULT_VELOCITY_Y;
 }
 
 function restart() {
@@ -49,12 +49,12 @@ function gameLoop(timeStamp) {
     window.requestAnimationFrame(gameLoop);
 }
 
-setInterval(() => {
-    rocketVY += 20;
-
-    ballVX += 0.3;
-    ballVY += 0.1;
-}, 3000);
+// setInterval(() => {
+//     rocketVY += 20;
+//
+//     ballVX += 0.3;
+//     ballVY += 0.1;
+// }, 3000);
 
 init();
 window.requestAnimationFrame(gameLoop);

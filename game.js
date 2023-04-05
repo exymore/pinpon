@@ -16,7 +16,7 @@ const update = (secondsPassed) => {
     playerScoreObject.draw(playerScore);
     opponentScoreObject.draw(opponentScore);
 
-    ball.draw({yBox: playerRocket.yBox}, {yBox: opponentRocket.yBox}, ballVX, ballVY)
+    ball.draw(playerRocket, opponentRocket, ballVX, ballVY)
 };
 
 const setPlayerVictory = (type) => {
@@ -48,13 +48,6 @@ function gameLoop(timeStamp) {
     update(secondsPassed);
     window.requestAnimationFrame(gameLoop);
 }
-
-// setInterval(() => {
-//     rocketVY += 20;
-//
-//     ballVX += 0.3;
-//     ballVY += 0.1;
-// }, 3000);
 
 init();
 window.requestAnimationFrame(gameLoop);

@@ -65,15 +65,21 @@ class Ball {
     }
 
     hit(rocket) {
+        const normalizedYPos = this.y + this.side/2 - rocket.yBox[0];
+        let normalizedYPosPercentage = normalizedYPos / rocket.height;
         this.vx = -this.vx;
-        ballVX *= BALL_HIT_VELOCITY_MULTIPLIER;
 
-        setTimeout(() => {
-            ballVX /= BALL_HIT_VELOCITY_MULTIPLIER
-        }, 750)
+        if (normalizedYPosPercentage < 0.5) {
+            normalizedYPosPercentage = 1 - normalizedYPosPercentage;
+        }
+
+        ballVX =  BALL_DEFAULT_VELOCITY_X * BALL_HIT_X_VELOCITY_MULTIPLIER;
+        ballVY = normalizedYPosPercentage * BALL_HIT_Y_VELOCITY_MULTIPLIER;
     }
 
     setVelocity(vx, vy) {
+        ballVX *= .994;
+
         this.vx < 0 ? this.vx = -vx : this.vx = vx;
         this.vy < 0 ? this.vy = -vy : this.vy = vy;
     }

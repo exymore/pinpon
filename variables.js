@@ -37,3 +37,10 @@ const ROCKET_DEFAULT_VELOCITY_Y = 750; // px/s
 // Velocity multipliers
 const BALL_HIT_X_VELOCITY_MULTIPLIER = 2;
 const BALL_HIT_Y_VELOCITY_MULTIPLIER = 4;
+
+// Difficulty
+const DIFFICULTY_OPTIONS = {
+    EASY: 0.3,
+    MEDIUM: 0.35,
+    HARD: 0.4,
+};

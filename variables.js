@@ -29,9 +29,11 @@ let opponentScore = 0;
 let secondsPassed = 0;
 let oldTimeStamp = 0;
 
-// Velocity variables
-const BALL_DEFAULT_VELOCITY_X = 10;
-const BALL_DEFAULT_VELOCITY_Y = 1.2;
+// Velocity defaults
+const BALL_DEFAULT_VELOCITY_X = -10;
+const BALL_DEFAULT_VELOCITY_Y = 1.1;
 const ROCKET_DEFAULT_VELOCITY_Y = 750; // px/s
+
+// Velocity multipliers
 const BALL_HIT_X_VELOCITY_MULTIPLIER = 2;
-const BALL_HIT_Y_VELOCITY_MULTIPLIER = 6;
+const BALL_HIT_Y_VELOCITY_MULTIPLIER = 4;

@@ -22,7 +22,7 @@ class Rocket {
         this.yBox = [this.y, this.y + this.height];
         this.secondsPassedSinceLastUpdate = secondsPassed;
         if (this.type === ROCKET_TYPES.OPPONENT) {
-            this.vy = vy * 0.4;
+            this.vy = vy * 0.3;
         }
         else this.vy = vy;
 

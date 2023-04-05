@@ -13,10 +13,11 @@ const update = (secondsPassed) => {
 
     playerRocket.draw(secondsPassed, null, rocketVY);
     opponentRocket.draw(secondsPassed, ball.y, rocketVY);
+
     playerScoreObject.draw(playerScore);
     opponentScoreObject.draw(opponentScore);
 
-    ball.draw(playerRocket, opponentRocket, ballVX, ballVY)
+    ball.draw(playerRocket, opponentRocket)
 };
 
 const setPlayerVictory = (type) => {

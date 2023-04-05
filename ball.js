@@ -2,29 +2,29 @@ class Ball {
     constructor(x, y, side) {
         this.x = x;
         this.y = y;
-        this.vx = BALL_DEFAULT_VELOCITY_X;
-        this.vy = BALL_DEFAULT_VELOCITY_Y;
         this.side = side;
     }
 
-    draw(rocketX, opponentRocketX, vx, vy) {
+    draw(rocketX, opponentRocketX) {
         drawRect(this.x, this.y, this.side, this.side, 'white');
-        this.startMoving(rocketX, opponentRocketX, vx, vy);
+        this.startMoving(rocketX, opponentRocketX);
     }
 
-    startMoving(playerRocket, opponentRocket, vx, vy) {
-        this.setVelocity(vx, vy);
-        this.x += this.vx;
-        this.y += this.vy;
+    startMoving(playerRocket, opponentRocket) {
+        ballVX *= .996;
+        ballVY *= .999;
+
+        this.x += ballVX;
+        this.y += ballVY;
 
         const movingTo = {
-            player: this.vx < 0,
-            opponent: this.vx > 0
+            player: ballVX < 0,
+            opponent: ballVX > 0
         };
 
         const hitting = {
-            top: this.y + this.vy <= UPPER_LIMIT,
-            bottom: this.y + this.vy + this.side >= LOWER_LIMIT,
+            top: this.y <= UPPER_LIMIT,
+            bottom: this.y + this.side >= LOWER_LIMIT,
 
             playerRocket: false,
             opponentRocket: false
@@ -32,7 +32,7 @@ class Ball {
 
 
         if (hitting.top || hitting.bottom) {
-            this.vy = -this.vy;
+            ballVY = -ballVY;
             return;
         }
 
@@ -65,22 +65,27 @@ class Ball {
     }
 
     hit(rocket) {
-        const normalizedYPos = this.y + this.side/2 - rocket.yBox[0];
-        let normalizedYPosPercentage = normalizedYPos / rocket.height;
-        this.vx = -this.vx;
-
-        if (normalizedYPosPercentage < 0.5) {
-            normalizedYPosPercentage = 1 - normalizedYPosPercentage;
-        }
-
-        ballVX =  BALL_DEFAULT_VELOCITY_X * BALL_HIT_X_VELOCITY_MULTIPLIER;
-        ballVY = normalizedYPosPercentage * BALL_HIT_Y_VELOCITY_MULTIPLIER;
+        ballVX = this.getBallVX(rocket);
+        ballVY = this.getBallVY(rocket);
     }
 
-    setVelocity(vx, vy) {
-        ballVX *= .994;
+    getBallVX(rocket) {
+        if (rocket.type === ROCKET_TYPES.PLAYER) {
+            return -BALL_DEFAULT_VELOCITY_X * BALL_HIT_X_VELOCITY_MULTIPLIER;
+        }
+        if (rocket.type === ROCKET_TYPES.OPPONENT) {
+            return BALL_DEFAULT_VELOCITY_X * BALL_HIT_X_VELOCITY_MULTIPLIER;
+        }
+    }
 
-        this.vx < 0 ? this.vx = -vx : this.vx = vx;
-        this.vy < 0 ? this.vy = -vy : this.vy = vy;
+    getBallVY(rocket) {
+        const normalizedYPos = this.y - rocket.yBox[0];
+        let normalizedYPosPercentage = normalizedYPos / rocket.height;
+
+        if (normalizedYPosPercentage < 0.5) {
+            normalizedYPosPercentage = - (1 - normalizedYPosPercentage);
+        }
+
+        return BALL_DEFAULT_VELOCITY_Y * normalizedYPosPercentage * BALL_HIT_Y_VELOCITY_MULTIPLIER;
     }
 }

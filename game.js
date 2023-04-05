@@ -31,7 +31,7 @@ function resetOptions() {
     opponentRocket = null;
     ball = null;
 
-    rocketVY = ROCKET_DEFAULT_VELOCITY_Y + round * 10;
+    rocketVY = ROCKET_DEFAULT_VELOCITY_Y + round * 5;
     ballVX = BALL_DEFAULT_VELOCITY_X;
     ballVY = BALL_DEFAULT_VELOCITY_Y;
 }

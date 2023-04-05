@@ -21,7 +21,10 @@ class Rocket {
     draw(secondsPassed, ballPosY, vy) {
         this.yBox = [this.y, this.y + this.height];
         this.secondsPassedSinceLastUpdate = secondsPassed;
-        this.vy = vy;
+        if (this.type === ROCKET_TYPES.OPPONENT) {
+            this.vy = vy * 0.4;
+        }
+        else this.vy = vy;
 
         drawRect(this.x, this.y, this.width, this.height, 'white');
         this.type === ROCKET_TYPES.OPPONENT ?
